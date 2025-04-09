@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "Opens and closes preset webpages at scheduled times.",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - Scheduled Webpage Opener",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "Time (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "Timezone",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "System Default",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "Add Schedule",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "Save Settings",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "Cancel",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "Remove",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "e.g., example.com or https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "Settings saved successfully!",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "Error saving settings. Please check input.",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "Invalid time format. Please use HH:MM.",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "Invalid URL format.",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "Don't auto-close page",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "Close tab after duration",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "Close tab at specific time",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "minutes later",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "to close",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "Maximum value is 999",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "Please enter a number between 1-999",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "The scheduled page close time is earlier than the open time, the page will be closed at the specified time the next day",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "Clear All",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "All schedules cleared successfully!",
+    "description": "Notification message after clearing all schedules."
+  }
+}

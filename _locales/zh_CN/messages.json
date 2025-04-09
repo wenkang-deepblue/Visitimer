@@ -1,0 +1,142 @@
+{
+    "extName": {
+      "message": "Visitimer",
+      "description": "扩展程序的名称。"
+    },
+    "extDesc": {
+      "message": "在预设的时间定时打开并关闭指定的网页。",
+      "description": "扩展程序的描述。"
+    },
+    "optionsTitle": {
+      "message": "Visitimer - 定时打开网页",
+      "description": "设置页面的标题。"
+    },
+    "urlLabel": {
+      "message": "网址",
+      "description": "URL输入框的标签。"
+    },
+    "timeLabel": {
+      "message": "时间 (HH:MM)",
+      "description": "时间输入框的标签。"
+    },
+    "timezoneLabel": {
+      "message": "时区",
+      "description": "时区显示的标签。"
+    },
+    "systemTimezone": {
+      "message": "系统默认",
+      "description": "提示使用系统默认时区的文字。"
+    },
+    "addBtn": {
+      "message": "添加计划",
+      "description": "添加新计划行的按钮文字。"
+    },
+    "saveBtn": {
+      "message": "保存设置",
+      "description": "保存配置的按钮文字。"
+    },
+    "cancelBtn": {
+      "message": "取消",
+      "description": "取消更改（或关闭）的按钮文字。"
+    },
+    "removeBtn": {
+      "message": "移除",
+      "description": "移除计划行的按钮文字。"
+    },
+    "urlPlaceholder": {
+      "message": "例如：example.com 或 https://example.com",
+      "description": "URL 输入框的占位符。"
+    },
+    "saveSuccess": {
+      "message": "设置已成功保存！",
+      "description": "成功保存时的通知消息。"
+    },
+    "saveError": {
+      "message": "保存设置时出错，请检查输入。",
+      "description": "保存错误时的通知消息。"
+    },
+     "invalidTime": {
+      "message": "无效的时间格式，请使用 HH:MM。",
+      "description": "无效时间输入的错误消息。"
+    },
+    "invalidUrl": {
+      "message": "无效的 URL 格式。",
+      "description": "无效 URL 输入的错误消息。"
+    },
+    "timeFormatLabel": {
+      "message": "格式",
+      "description": "时间格式选择的标签。"
+    },
+    "hour24": {
+      "message": "24小时制",
+      "description": "24小时制选项。"
+    },
+    "hour12": {
+      "message": "12小时制",
+      "description": "12小时制选项。"
+    },
+    "hourLabel": {
+      "message": "时",
+      "description": "小时输入的标签。"
+    },
+    "minuteLabel": {
+      "message": "分",
+      "description": "分钟输入的标签。"
+    },
+    "am": {
+      "message": "上午",
+      "description": "12小时制的上午标识。"
+    },
+    "pm": {
+      "message": "下午",
+      "description": "12小时制的下午标识。"
+    },
+    "invalidHour": {
+      "message": "无效的小时 (0-23 或 1-12)。",
+      "description": "无效小时值的错误信息。"
+    },
+    "invalidMinute": {
+      "message": "无效的分钟 (0-59)。",
+      "description": "无效分钟值的错误信息。"
+    },
+    "noAutoClose": {
+      "message": "不自动关闭页面",
+      "description": "不自动关闭页面的选项"
+    },
+    "closeAfterDuration": {
+      "message": "一段时间后关闭页面",
+      "description": "一段时间后关闭页面的选项"
+    },
+    "closeAtTime": {
+      "message": "指定时间关闭页面",
+      "description": "指定时间关闭页面的选项"
+    },
+    "minutesAfterClose": {
+      "message": "分钟后关闭页面",
+      "description": "分钟后关闭页面的文本"
+    },
+    "timeToClose": {
+      "message": "时关闭页面",
+      "description": "时关闭页面的文本"
+    },
+    "maxDurationWarning": {
+      "message": "最大输入值为999",
+      "description": "当用户尝试输入超过最大值的警告"
+    },
+    "maxDurationInfo": {
+      "message": "请输入1-999之间的数字",
+      "description": "当用户点击输入框时的提示信息"
+    },
+    "closeTimeBeforeOpenTime": {
+    "message": "预定关闭页面时间早于打开时间，将于第二天指定时间关闭页面",
+    "description": "当关闭时间早于打开时间时显示的警告消息。"
+    },
+    "clearAllBtn": {
+      "message": "全部清除",
+      "description": "清除所有计划的按钮文字。"
+    },
+    "clearAllSuccess": {
+      "message": "已成功清除所有计划！",
+      "description": "清除所有计划后的通知消息。"
+    }
+  }

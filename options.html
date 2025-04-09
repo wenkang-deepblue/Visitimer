@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="optionsTitle"></title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <h1 data-i18n="optionsTitle"></h1>
+    
+    <p id="status-message" class="status"></p>
+
+    <div id="schedules-container">
+    </div>
+
+    <div id="timezone-info-container">
+        <span class="timezone-info">
+            <span data-i18n="timezoneLabel"></span>: <span data-i18n="systemTimezone"></span>
+        </span>
+    </div>
+
+    <div class="controls">
+        <button id="add-schedule" data-i18n="addBtn"></button>
+        <button id="save-settings" data-i18n="saveBtn"></button>
+        <button id="clear-all" data-i18n="clearAllBtn"></button>
+        <button id="cancel-settings" data-i18n="cancelBtn"></button>
+    </div>
+
+    <div id="schedule-template" class="schedule-row" style="display: none;">
+        <span class="index"></span>
+        <input type="text" class="url-input" data-i18n-placeholder="urlPlaceholder">
+        <input type="time" class="time-input">
+        
+        <select class="auto-close-select">
+            <option value="no-close" data-i18n="noAutoClose"></option>
+            <option value="after-duration" data-i18n="closeAfterDuration"></option>
+            <option value="at-time" data-i18n="closeAtTime"></option>
+        </select>
+        
+        <div class="duration-container" style="display: none;">
+            <input type="number" class="duration-input" min="1" max="999" value="30">
+            <span data-i18n="minutesAfterClose"></span>
+        </div>
+        
+        <div class="time-close-container" style="display: none;">
+            <input type="time" class="close-time-input">
+            <span data-i18n="timeToClose"></span>
+        </div>
+        
+        <button class="remove-schedule" data-i18n="removeBtn"></button>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
