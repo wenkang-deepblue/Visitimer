@@ -28,11 +28,11 @@
     "description": "Text indicating system default timezone is used."
   },
   "addBtn": {
-    "message": "Adicionar agendamento",
+    "message": "Adicionar novo",
     "description": "Button text to add a new schedule row."
   },
   "saveBtn": {
-    "message": "Salvar configurações",
+    "message": "Salvar",
     "description": "Button text to save the configurations."
   },
   "cancelBtn": {

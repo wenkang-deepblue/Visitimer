@@ -28,11 +28,11 @@
     "description": "Text indicating system default timezone is used."
   },
   "addBtn": {
-    "message": "スケジュール追加",
+    "message": "新規追加",
     "description": "Button text to add a new schedule row."
   },
   "saveBtn": {
-    "message": "設定を保存",
+    "message": "保存",
     "description": "Button text to save the configurations."
   },
   "cancelBtn": {
