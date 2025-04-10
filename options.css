@@ -1,7 +1,7 @@
 body {
     font-family: sans-serif;
-    padding: 20px;
-    min-width: 750px;
+    padding: 10px 5px;
+    min-width: 760px;
     max-width: 800px;
     margin: 0 auto;
     background-color: #ebf0fd
@@ -31,14 +31,13 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     padding: 8px;
     border: none;
-    flex-wrap: wrap;
 }
 
 .schedule-row .index {
-    min-width: 20px;
+    min-width: 5px;
     text-align: right;
     font-weight: bold;
 }
@@ -57,7 +56,7 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 1.3125rem;
-    width: 4.5rem;
+    max-width: 5.8rem;
 }
 
 #timezone-info-container {
@@ -83,6 +82,7 @@ h1 {
     align-items: center;
     gap: 5px;
     height: 1.3125rem;
+    width: 11.7rem;
 }
 
 .duration-input {
@@ -128,7 +128,7 @@ h1 {
 #add-schedule {
     background-color: #673AB7;
     color: white;
-    width: 5rem;
+    width: 7.2rem;
 }
 #add-schedule:hover {
     background-color: #512DA8;
@@ -139,7 +139,7 @@ h1 {
 #save-settings {
     background-color: #2196F3;
     color: white;
-    width: 5rem;
+    width: 7.2rem;
 }
 #save-settings:hover {
     background-color: #0b7dda;
@@ -149,7 +149,7 @@ h1 {
 #cancel-settings {
     background-color: #ffc107;
     color: white;
-    width: 5rem;
+    width: 7.2rem;
 }
 #cancel-settings:hover {
     background-color: #FB8C00;
@@ -159,7 +159,7 @@ h1 {
 #clear-all {
     background-color: #f44336;
     color: white;
-    width: 5rem;
+    width: 7.2rem;
 }
 #clear-all:hover {
     background-color: #d32f2f;

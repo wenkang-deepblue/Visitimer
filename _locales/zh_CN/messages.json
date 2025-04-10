@@ -80,8 +80,8 @@
       "description": "分钟后关闭页面的文本"
     },
     "timeToClose": {
-      "message": "时关闭页面",
-      "description": "时关闭页面的文本"
+      "message": "关闭页面",
+      "description": "指定时间关闭页面的文本"
     },
     "maxDurationWarning": {
       "message": "最大输入值为999",
