@@ -6,7 +6,7 @@ Thank you for using Visitimer ("the Extension"), a Chrome extension designed to 
 
 ## 1. Information We Collect
 
-**FIRST OF ALL: The Extension will not transmit any data out from your browser, Your data used by this Extersion keeps in your browser on your computer.**
+**FIRST OF ALL: The Extension will not transmit any data out from your browser, Your data used by this Extersion keeps in your browser on your computer.**  
 Visitimer is designed to function entirely on your local device. The Extension collects and store only the information **you provide directly** within the Extension's interface, which is necessary for its core functionality:
 
 *   **Scheduled Task Data:**
