@@ -53,4 +53,4 @@ We may update this Privacy Policy from time to time. If we make changes, we will
 
 ## 7. Contact Us
 
-If you have any questions or concerns about this Privacy Policy or the Extension's privacy practices, please contact us by the email provided on the Visitimer page of Chrome Web Store.
+If you have any questions or concerns about this Privacy Policy or the Extension's privacy practices, please open an issue on this GitHub repository: **[Visitimer Issues](https://github.com/wenkang-deepblue/Visitimer/issues)**.
