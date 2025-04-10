@@ -54,7 +54,7 @@ function handleAutoCloseChange(selectElem) {
 function createScheduleRow(schedule = { url: '', time: '', autoClose: 'no-close', closeDuration: 30, closeTime: '' }, index) {
     const newRow = scheduleTemplate.cloneNode(true);
     newRow.removeAttribute('id');
-    newRow.style.display = 'flex'; // Make it visible
+    newRow.style.display = 'flex';
 
     const indexSpan = newRow.querySelector('.index');
     const urlInput = newRow.querySelector('.url-input');
@@ -153,7 +153,6 @@ function loadSchedules() {
     chrome.storage.sync.get(['schedules'], (result) => {
         schedulesContainer.innerHTML = ''; // Clear existing rows before loading
         const schedules = result.schedules || [];
-        // <<<--- Requirement 1: Ensure at least one row is displayed ---<<<
         if (schedules.length === 0) {
             // Add one empty, visible row if storage is empty
              createScheduleRow({ url: '', time: '', autoClose: 'no-close', closeDuration: 30, closeTime: '' }, 0); // Provide default empty values
@@ -162,7 +161,6 @@ function loadSchedules() {
                 createScheduleRow(schedule, index);
             });
         }
-        // No need to call updateIndices here, createScheduleRow handles index display
     });
 }
 
@@ -195,24 +193,22 @@ function saveSchedules() {
 
         // Basic Validation for empty fields (Allow empty row only if it's the only one)
         if (!url && !time) {
-             if (rows.length > 1) {
-                 console.log(`Skipping empty row ${displayIndex}`);
-                 return; // Skip saving this empty row if others exist
-             } else if (rows.length === 1) {
-                 console.log(`Only row is empty, saving empty array.`);
-                 schedulesToSave = []; // Prepare to save empty array
-                 return; // Stop processing this row
-             }
+            if (rows.length > 1) {
+                return; // Skip saving this empty row if others exist
+            } else if (rows.length === 1) {
+                schedulesToSave = []; // Prepare to save empty array
+                return; // Stop processing this row
+            }
         }
          // Check if only one field is filled
-         if ((!url && time) || (url && !time)) {
-             hasError = true;
-             statusMessage.textContent = `${chrome.i18n.getMessage('saveError')} (Row ${displayIndex})`;
-             statusMessage.classList.add('error');
-             urlInput.style.borderColor = !url ? 'red' : '';
-             timeInput.style.borderColor = !time ? 'red' : '';
-             return;
-         }
+        if ((!url && time) || (url && !time)) {
+            hasError = true;
+            statusMessage.textContent = `${chrome.i18n.getMessage('saveError')} (Row ${displayIndex})`;
+            statusMessage.classList.add('error');
+            urlInput.style.borderColor = !url ? 'red' : '';
+            timeInput.style.borderColor = !time ? 'red' : '';
+            return;
+        }
 
         // Validate time format (redundant for type="time", but good practice)
         if (time && !/^\d{2}:\d{2}$/.test(time)) {
@@ -220,7 +216,7 @@ function saveSchedules() {
             statusMessage.textContent = `${chrome.i18n.getMessage('invalidTime')} (Row ${displayIndex})`;
             statusMessage.classList.add('error');
             timeInput.style.borderColor = 'red';
-             timeInput.setCustomValidity(chrome.i18n.getMessage('invalidTime'));
+            timeInput.setCustomValidity(chrome.i18n.getMessage('invalidTime'));
             return;
         }
 
@@ -267,12 +263,12 @@ function saveSchedules() {
         if (url) {
             url = addHttpPrefix(url);
             if (!isValidHttpUrl(url)) {
-                 hasError = true;
-                 statusMessage.textContent = `${chrome.i18n.getMessage('invalidUrl')} (Row ${displayIndex})`;
-                 statusMessage.classList.add('error');
-                 urlInput.style.borderColor = 'red';
-                 urlInput.setCustomValidity(chrome.i18n.getMessage('invalidUrl'));
-                 return;
+                hasError = true;
+                statusMessage.textContent = `${chrome.i18n.getMessage('invalidUrl')} (Row ${displayIndex})`;
+                statusMessage.classList.add('error');
+                urlInput.style.borderColor = 'red';
+                urlInput.setCustomValidity(chrome.i18n.getMessage('invalidUrl'));
+                return;
             }
         }
 
@@ -287,41 +283,37 @@ function saveSchedules() {
                 closeTime: closeTime
             });
         }
-    }); // End rows.forEach
+    });
 
     // Final check if the only row was empty
-     if (rows.length === 1 && schedulesToSave.length === 0 && !hasError) {
-         const urlInput = rows[0].querySelector('.url-input');
-         const timeInput = rows[0].querySelector('.time-input');
-         if (!urlInput.value.trim() && !timeInput.value) {
-              // It was indeed the empty single row case
-              console.log("Proceeding to save empty array.");
-         } else if (!hasError) {
-              // Single row had content but failed validation, error should have been set
-              // If somehow error wasn't set, set a generic one
-               hasError = true;
-               if (!statusMessage.textContent) {
-                   statusMessage.textContent = chrome.i18n.getMessage('saveError');
-                   statusMessage.classList.add('error');
-               }
-         }
-     }
+    if (rows.length === 1 && schedulesToSave.length === 0 && !hasError) {
+        const urlInput = rows[0].querySelector('.url-input');
+        const timeInput = rows[0].querySelector('.time-input');
+        if (!urlInput.value.trim() && !timeInput.value) {
+             // It was indeed the empty single row case
+        } else if (!hasError) {
+             // Single row had content but failed validation, error should have been set
+             // If somehow error wasn't set, set a generic one
+            hasError = true;
+            if (!statusMessage.textContent) {
+                statusMessage.textContent = chrome.i18n.getMessage('saveError');
+                statusMessage.classList.add('error');
+            }
+        }
+    }
 
 
     if (hasError) {
-        console.log("Errors found, not saving.");
         return; // Don't save if errors were found
     }
 
     // --- Proceed to Save ---
-    console.log("Attempting to save schedules:", schedulesToSave);
     chrome.storage.sync.set({ schedules: schedulesToSave }, () => {
         if (chrome.runtime.lastError) {
             console.error("Error saving schedules:", chrome.runtime.lastError);
             statusMessage.textContent = chrome.i18n.getMessage('saveError') + ' ' + chrome.runtime.lastError.message;
             statusMessage.classList.add('error');
         } else {
-            console.log("Schedules saved successfully:", schedulesToSave);
             // If there is no time comparison message, show save success message
             if (!statusMessage.textContent) {
                 statusMessage.textContent = chrome.i18n.getMessage('saveSuccess');
@@ -341,25 +333,24 @@ function saveSchedules() {
     });
 }
 
-// --- Utility Functions (Keep these as they were) ---
 function addHttpPrefix(url) {
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
         if (url.includes('.') && !url.includes(' ') && !url.startsWith('/')) {
-             return 'https://' + url;
+            return 'https://' + url;
         }
     }
     return url;
 }
 
 function isValidHttpUrl(string) {
-  if (!string) return false; // Empty string is not a valid URL here
-  let url;
-  try {
-    url = new URL(string);
-  } catch (_) {
-    return false;
-  }
-  return url.protocol === "http:" || url.protocol === "https:";
+    if (!string) return false; // Empty string is not a valid URL here
+    let url;
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
 }
 
 
@@ -367,7 +358,7 @@ function isValidHttpUrl(string) {
 
 document.addEventListener('DOMContentLoaded', () => {
     applyLocalization();
-    loadSchedules(); // This now ensures at least one row is shown
+    loadSchedules();
 });
 
 addScheduleButton.addEventListener('click', () => {
@@ -378,7 +369,6 @@ addScheduleButton.addEventListener('click', () => {
 
 saveButton.addEventListener('click', saveSchedules);
 
-// <<<--- Requirement: Add Cancel button functionality ---<<<
 if (cancelButton) {
     cancelButton.addEventListener('click', () => {
         window.close(); // Close the popup/options page

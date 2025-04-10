@@ -4,8 +4,6 @@
 
 **Visitimer** is a Chrome extension that automatically opens and closes webpages at scheduled times. It's perfect for people who need to visit specific webpages regularly, like checking email, news, or work-related pages.
 
-
-
 ## Features
 
 - **Schedule webpage Visits**: Set specific times to automatically open specific webpages
@@ -16,7 +14,7 @@
 - **Daily Repetition**: All schedules automatically repeat daily
 - **Multiple Schedules**: Add as many scheduled webpage visits as you need
 - **Simple Interface**: Easy-to-use schedule management
-- **Multilingual Support**: Available in English and Chinese
+- **Multilingual Support**: Available in: *English (en)*, *Simplified Chinese (zh_CN)*, *Traditional Chinese (zh_TW)*, *Korean (ko)*, *Japanese (ja)*, *French (fr)*, *German (de)*, *Italian (it)*, *Spanish (es)*, *Portuguese (pt)*。
 
 ## Installation
 

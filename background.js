@@ -109,9 +109,6 @@ async function scheduleTabClose(tabId, closeTimeMs) {
     chrome.alarms.create(alarmName, {
         when: closeTimeMs
     });
-    
-    // Record current tabs to close
-    listTabsToClose();
 }
 
 // Handle tab closing alarm
@@ -155,14 +152,9 @@ async function handleCloseTabAlarm(alarm) {
         chrome.tabs.remove(tabEntry.tabId, () => {
             if (chrome.runtime.lastError) {
                 console.warn(`cannot close tab ${tabEntry.tabId}: ${chrome.runtime.lastError.message}`);
-            } else {
-                console.log(`tab ${tabEntry.tabId} closed at ${new Date().toLocaleString()}`);
             }
         });
     }
-    
-    // Record current tabs to close
-    listTabsToClose();
 }
 
 // Function: Remove tab from close list
@@ -196,9 +188,6 @@ async function removeTabFromCloseList(tabId) {
             chrome.storage.local.set({ tabsToClose: updatedTabsToClose }, resolve);
         });
     });
-    
-    // Record current tabs to close
-    listTabsToClose();
 }
 
 // Check and recreate tab closing alarms
@@ -262,26 +251,6 @@ async function checkTabsToClose() {
             });
         }
     });
-    
-    // Record current tabs to close
-    listTabsToClose();
-}
-
-// Function: List all tabs to close
-async function listTabsToClose() {
-    const result = await new Promise(resolve => {
-        chrome.storage.local.get(['tabsToClose'], resolve);
-    });
-    
-    const tabsToClose = result.tabsToClose || [];
-    
-    console.log(`current tabs to close: ${tabsToClose.length}`);
-    
-    if (tabsToClose.length > 0) {
-        tabsToClose.forEach((entry, index) => {
-            console.log(`[${index}] tabId: ${entry.tabId}, alarmName: ${entry.alarmName}, closeTime: ${new Date(entry.closeTime).toLocaleString()}`);
-        });
-    }
 }
 
 // --- Alarm Scheduling Logic ---
@@ -299,7 +268,7 @@ function getNextTimestamp(timeString) { // timeString is "HH:MM"
         nextOccurrence.setDate(nextOccurrence.getDate() + 1);
     }
 
-    return nextOccurrence.getTime(); // Return timestamp in milliseconds
+    return nextOccurrence.getTime();
 }
 
 // Calculate timestamp for a specific time

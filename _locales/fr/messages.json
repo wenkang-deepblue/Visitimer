@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "Ouvre et ferme des pages web prédéfinies aux heures programmées.",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - Ouvreur de pages web programmé",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "Heure (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "Fuseau horaire",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "Par défaut du système",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "Ajouter un horaire",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "Enregistrer les paramètres",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "Annuler",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "Supprimer",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "ex. example.com ou https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "Paramètres enregistrés avec succès !",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "Erreur lors de l'enregistrement des paramètres. Veuillez vérifier les données saisies.",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "Format d'heure invalide. Veuillez utiliser HH:MM.",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "Format d'URL invalide.",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "Ne pas fermer automatiquement",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "Fermer l'onglet après une durée",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "Fermer l'onglet à une heure précise",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "minutes plus tard",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "pour fermer",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "La valeur maximale est 999",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "Veuillez entrer un nombre entre 1 et 999",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "L'heure programmée pour fermer la page est antérieure à l'heure d'ouverture, la page sera fermée à l'heure spécifiée le jour suivant",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "Tout effacer",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "Tous les horaires ont été effacés avec succès !",
+    "description": "Notification message after clearing all schedules."
+  }
+}

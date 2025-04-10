@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "予定された時間にウェブページを開いて閉じます。",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - 予定されたウェブページオープナー",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "時間 (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "タイムゾーン",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "システムデフォルト",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "スケジュール追加",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "設定を保存",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "キャンセル",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "削除",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "例：example.com または https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "設定が正常に保存されました！",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "設定の保存中にエラーが発生しました。入力を確認してください。",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "無効な時間形式です。HH:MM形式を使用してください。",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "無効なURL形式です。",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "自動的に閉じない",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "一定時間後にタブを閉じる",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "指定時間にタブを閉じる",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "分後",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "に閉じる",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "最大値は999です",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "1〜999の間の数値を入力してください",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "予定されたページの閉じる時間が開く時間より早い場合、ページは翌日の指定時間に閉じられます",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "すべて削除",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "すべてのスケジュールが正常に削除されました！",
+    "description": "Notification message after clearing all schedules."
+  }
+}

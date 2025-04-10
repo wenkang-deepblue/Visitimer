@@ -4,35 +4,35 @@
       "description": "扩展程序的名称。"
     },
     "extDesc": {
-      "message": "在预设的时间定时打开并关闭指定的网页。",
+      "message": "在預設的時間定時開啟並關閉指定的網頁。",
       "description": "扩展程序的描述。"
     },
     "optionsTitle": {
-      "message": "Visitimer - 定时打开网页",
+      "message": "Visitimer - 定時開啟網頁",
       "description": "设置页面的标题。"
     },
     "urlLabel": {
-      "message": "网址",
+      "message": "網址",
       "description": "URL输入框的标签。"
     },
     "timeLabel": {
-      "message": "时间 (HH:MM)",
+      "message": "時間 (HH:MM)",
       "description": "时间输入框的标签。"
     },
     "timezoneLabel": {
-      "message": "时区",
+      "message": "時區",
       "description": "时区显示的标签。"
     },
     "systemTimezone": {
-      "message": "系统默认",
+      "message": "系統預設",
       "description": "提示使用系统默认时区的文字。"
     },
     "addBtn": {
-      "message": "添加计划",
+      "message": "新增排程",
       "description": "添加新计划行的按钮文字。"
     },
     "saveBtn": {
-      "message": "保存设置",
+      "message": "儲存設定",
       "description": "保存配置的按钮文字。"
     },
     "cancelBtn": {
@@ -48,59 +48,59 @@
       "description": "URL 输入框的占位符。"
     },
     "saveSuccess": {
-      "message": "设置已成功保存！",
+      "message": "設定已成功儲存！",
       "description": "成功保存时的通知消息。"
     },
     "saveError": {
-      "message": "保存设置时出错，请检查输入。",
+      "message": "儲存設定時出錯，請檢查輸入。",
       "description": "保存错误时的通知消息。"
     },
      "invalidTime": {
-      "message": "无效的时间格式，请使用 HH:MM。",
+      "message": "無效的時間格式，請使用 HH:MM。",
       "description": "无效时间输入的错误消息。"
     },
     "invalidUrl": {
-      "message": "无效的 URL 格式。",
+      "message": "無效的 URL 格式。",
       "description": "无效 URL 输入的错误消息。"
     },
     "noAutoClose": {
-      "message": "不自动关闭页面",
+      "message": "不自動關閉頁面",
       "description": "不自动关闭页面的选项"
     },
     "closeAfterDuration": {
-      "message": "一段时间后关闭页面",
+      "message": "一段時間後關閉頁面",
       "description": "一段时间后关闭页面的选项"
     },
     "closeAtTime": {
-      "message": "指定时间关闭页面",
+      "message": "指定時間關閉頁面",
       "description": "指定时间关闭页面的选项"
     },
     "minutesAfterClose": {
-      "message": "分钟后关闭页面",
+      "message": "分鐘後關閉頁面",
       "description": "分钟后关闭页面的文本"
     },
     "timeToClose": {
-      "message": "时关闭页面",
+      "message": "時關閉頁面",
       "description": "时关闭页面的文本"
     },
     "maxDurationWarning": {
-      "message": "最大输入值为999",
+      "message": "最大輸入值為999",
       "description": "当用户尝试输入超过最大值的警告"
     },
     "maxDurationInfo": {
-      "message": "请输入1-999之间的数字",
+      "message": "請輸入1-999之間的數字",
       "description": "当用户点击输入框时的提示信息"
     },
     "closeTimeBeforeOpenTime": {
-    "message": "预定关闭页面时间早于打开时间，将于第二天指定时间关闭页面",
-    "description": "当关闭时间早于打开时间时显示的警告消息。"
+      "message": "預定關閉頁面時間早於開啟時間，將於第二天指定時間關閉頁面",
+      "description": "当关闭时间早于打开时间时显示的警告消息。"
     },
     "clearAllBtn": {
       "message": "全部清除",
       "description": "清除所有计划的按钮文字。"
     },
     "clearAllSuccess": {
-      "message": "已成功清除所有计划！",
+      "message": "已成功清除所有排程！",
       "description": "清除所有计划后的通知消息。"
     }
-  }
+}

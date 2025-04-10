@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "Abre y cierra páginas web predefinidas en horarios programados.",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - Abridor de páginas web programado",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "Hora (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "Zona horaria",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "Predeterminado del sistema",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "Añadir programación",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "Guardar ajustes",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "Cancelar",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "Eliminar",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "ej. example.com o https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "¡Ajustes guardados correctamente!",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "Error al guardar los ajustes. Por favor, compruebe la entrada.",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "Formato de hora no válido. Por favor, use HH:MM.",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "Formato de URL no válido.",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "No cerrar automáticamente",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "Cerrar pestaña después de un tiempo",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "Cerrar pestaña a una hora específica",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "minutos después",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "para cerrar",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "El valor máximo es 999",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "Por favor, introduzca un número entre 1-999",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "La hora programada para cerrar la página es anterior a la hora de apertura, la página se cerrará a la hora especificada al día siguiente",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "Borrar todo",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "¡Todas las programaciones borradas correctamente!",
+    "description": "Notification message after clearing all schedules."
+  }
+}

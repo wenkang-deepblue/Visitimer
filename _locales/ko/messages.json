@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "예약된 시간에 웹페이지를 열고 닫습니다.",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - 예약된 웹페이지 오프너",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "시간 (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "시간대",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "시스템 기본값",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "일정 추가",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "설정 저장",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "취소",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "삭제",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "예: example.com 또는 https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "설정이 성공적으로 저장되었습니다!",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "설정 저장 중 오류가 발생했습니다. 입력을 확인해주세요.",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "잘못된 시간 형식입니다. HH:MM 형식을 사용해주세요.",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "잘못된 URL 형식입니다.",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "자동으로 닫지 않음",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "일정 시간 후 탭 닫기",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "특정 시간에 탭 닫기",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "분 후",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "에 닫기",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "최대값은 999입니다",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "1-999 사이의 숫자를 입력해주세요",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "예약된 페이지 닫기 시간이 열기 시간보다 이른 경우, 페이지는 다음 날 지정된 시간에 닫힙니다",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "모두 지우기",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "모든 일정이 성공적으로 삭제되었습니다!",
+    "description": "Notification message after clearing all schedules."
+  }
+}

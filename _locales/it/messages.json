@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Visitimer",
+    "description": "Name of the extension."
+  },
+  "extDesc": {
+    "message": "Apre e chiude pagine web preimpostate ad orari programmati.",
+    "description": "Description of the extension."
+  },
+  "optionsTitle": {
+    "message": "Visitimer - Apertura Programmata di Pagine Web",
+    "description": "Title for the options page."
+  },
+  "urlLabel": {
+    "message": "URL",
+    "description": "Label for the URL input field."
+  },
+  "timeLabel": {
+    "message": "Orario (HH:MM)",
+    "description": "Label for the time input field."
+  },
+  "timezoneLabel": {
+    "message": "Fuso orario",
+    "description": "Label for the timezone display."
+  },
+  "systemTimezone": {
+    "message": "Predefinito di sistema",
+    "description": "Text indicating system default timezone is used."
+  },
+  "addBtn": {
+    "message": "Aggiungi programmazione",
+    "description": "Button text to add a new schedule row."
+  },
+  "saveBtn": {
+    "message": "Salva impostazioni",
+    "description": "Button text to save the configurations."
+  },
+  "cancelBtn": {
+    "message": "Annulla",
+    "description": "Button text to cancel changes (or close)."
+  },
+  "removeBtn": {
+    "message": "Rimuovi",
+    "description": "Button text to remove a schedule row."
+  },
+  "urlPlaceholder": {
+    "message": "es. example.com o https://example.com",
+    "description": "Placeholder for URL input."
+  },
+  "saveSuccess": {
+    "message": "Impostazioni salvate con successo!",
+    "description": "Notification message on successful save."
+  },
+  "saveError": {
+    "message": "Errore nel salvare le impostazioni. Controlla i dati inseriti.",
+    "description": "Notification message on save error."
+  },
+   "invalidTime": {
+    "message": "Formato orario non valido. Utilizza HH:MM.",
+    "description": "Error message for invalid time input."
+  },
+  "invalidUrl": {
+    "message": "Formato URL non valido.",
+    "description": "Error message for invalid URL input."
+  },
+  "noAutoClose": {
+    "message": "Non chiudere automaticamente",
+    "description": "Option for not auto-closing page"
+  },
+  "closeAfterDuration": {
+    "message": "Chiudi scheda dopo un intervallo",
+    "description": "Option for closing page after duration"
+  },
+  "closeAtTime": {
+    "message": "Chiudi scheda a un orario specifico",
+    "description": "Option for closing page at specific time"
+  },
+  "minutesAfterClose": {
+    "message": "minuti dopo",
+    "description": "Text for minutes after closing"
+  },
+  "timeToClose": {
+    "message": "per chiudere",
+    "description": "Text for time to close"
+  },
+  "maxDurationWarning": {
+    "message": "Il valore massimo è 999",
+    "description": "Warning when user tries to input above maximum value"
+  },
+  "maxDurationInfo": {
+    "message": "Inserisci un numero tra 1 e 999",
+    "description": "Information shown when user focuses the input field"
+  },
+  "closeTimeBeforeOpenTime": {
+    "message": "L'orario programmato per la chiusura della pagina è precedente all'orario di apertura, la pagina verrà chiusa all'orario specificato il giorno successivo",
+    "description": "Warning message when close time is earlier than open time."
+  },
+  "clearAllBtn": {
+    "message": "Cancella tutto",
+    "description": "Button text to clear all schedules."
+  },
+  "clearAllSuccess": {
+    "message": "Tutte le programmazioni cancellate con successo!",
+    "description": "Notification message after clearing all schedules."
+  }
+}
