@@ -4,7 +4,7 @@
 
 Thank you for using Visitimer ("the Extension"), a Chrome extension designed to help you automatically open and close webpages based on a schedule you define. Your privacy is important to us. This Privacy Policy explains what information the Extension collects, how it's used and stored, and your choices regarding that information.
 
-## 1. Information We Collect
+## 1. Information The Extension Collect
 
 **FIRST OF ALL: The Extension will not transmit any data out from your browser. Your data used by this Extersion keeps in your browser on your computer.**  
 Visitimer is designed to function entirely on your local device. The Extension collects and store only the information you provide directly within the Extension's interface, which is necessary for its core functionality:
@@ -19,9 +19,9 @@ Visitimer is designed to function entirely on your local device. The Extension c
 *   **Temporary State Data:**
     *   Information about tabs that have been opened by the Extension and are scheduled to be automatically closed (including the Tab ID and the scheduled closing time). This data is temporary and removed once the tab is closed or the task is otherwise completed or invalidated.
 
-**We DO NOT collect any other personal information**, such as your name, email address, IP address (other than what you might enter *as a URL to visit*), browsing history (beyond the URLs you explicitly schedule), location data, or any other sensitive information.
+**The Extension and the developer DO NOT collect any other personal information**, such as your name, email address, IP address (other than what you might enter *as a URL to visit*), browsing history (beyond the URLs you explicitly schedule), location data, or any other sensitive information.
 
-## 2. How We Use Information
+## 2. How The Extension Uses Information
 
 The information collected is used **exclusively** for the following purposes:
 
@@ -41,15 +41,15 @@ The Extension **does not** use your information for tracking, analytics, adverti
 
 ## 4. Data Sharing
 
-**We DO NOT share any of the collected information (your schedules or temporary tab state) with the developer or any third parties.** The Extension operates entirely locally, and no data is transmitted from your browser to any external servers controlled by the developer or others.
+**The Extension and the developer DO NOT share any of the collected information (your schedules or temporary tab state) with the developer or any third parties.** The Extension operates entirely locally, and no data is transmitted from your browser to any external servers controlled by the developer or others.
 
 ## 5. Security
 
-We rely on the security mechanisms provided by the Google Chrome browser and its storage APIs to protect the data stored locally.
+The extension rely on the security mechanisms provided by the Google Chrome browser and its storage APIs to protect the data stored locally.
 
 ## 6. Changes to This Privacy Policy
 
-We may update this Privacy Policy from time to time. If we make changes, we will update the "Effective Date" at the top of this policy. We encourage you to review this Privacy Policy periodically. Your continued use of the Extension after any changes constitutes your acceptance of the new Privacy Policy.
+The developer may update this Privacy Policy from time to time. If changes made, the "Effective Date" at the top of this policy will be updated accordingly. The developer encourage you to review this Privacy Policy periodically. Your continued use of the Extension after any changes constitutes your acceptance of the new Privacy Policy.
 
 ## 7. Contact
 
