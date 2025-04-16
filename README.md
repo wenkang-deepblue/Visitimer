@@ -26,7 +26,7 @@
 5. The extension icon should appear in your browser toolbar
 
 ### From Chrome Web Store
-* Coming soon
+* [Chrome Web Store](https://chromewebstore.google.com/detail/visitimer/hnicenbfjcbcjjamehaclepifddoaapm) (https://chromewebstore.google.com/detail/visitimer/hnicenbfjcbcjjamehaclepifddoaapm)
 
 ## Usage
 
