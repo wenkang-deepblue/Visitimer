@@ -51,6 +51,6 @@ We rely on the security mechanisms provided by the Google Chrome browser and its
 
 We may update this Privacy Policy from time to time. If we make changes, we will update the "Effective Date" at the top of this policy. We encourage you to review this Privacy Policy periodically. Your continued use of the Extension after any changes constitutes your acceptance of the new Privacy Policy.
 
-## 7. Contact Us
+## 7. Contact
 
 If you have any questions or concerns about this Privacy Policy or the Extension's privacy practices, please open an issue on this GitHub repository: **[Visitimer Issues](https://github.com/wenkang-deepblue/Visitimer/issues)**.
