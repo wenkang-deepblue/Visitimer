@@ -260,23 +260,28 @@ function saveSchedules() {
         }
 
         // Add http(s):// prefix if missing and validate URL
-        if (url) {
-            url = addHttpPrefix(url);
-            if (!isValidHttpUrl(url)) {
-                hasError = true;
-                statusMessage.textContent = `${chrome.i18n.getMessage('invalidUrl')} (Row ${displayIndex})`;
-                statusMessage.classList.add('error');
-                urlInput.style.borderColor = 'red';
-                urlInput.setCustomValidity(chrome.i18n.getMessage('invalidUrl'));
-                return;
+        // Support for multiple URLs separated by semicolons
+        let urlList = url.split(';').map(u => u.trim()).filter(u => u);
+        let validUrls = [];
+        if (urlList.length > 0) {
+            for (const rawUrl of urlList) {
+                const fullUrl = addHttpPrefix(rawUrl);
+                if (!isValidHttpUrl(fullUrl)) {
+                    hasError = true;
+                    statusMessage.textContent = `${chrome.i18n.getMessage('invalidUrl')} (Row ${displayIndex})`;
+                    statusMessage.classList.add('error');
+                    urlInput.style.borderColor = 'red';
+                    urlInput.setCustomValidity(chrome.i18n.getMessage('invalidUrl'));
+                    return;
+                }
+                validUrls.push(fullUrl);
             }
         }
 
-
-        // If passed all checks for this row
-        if(url && time) { // Only add if both fields are valid
-            schedulesToSave.push({ 
-                url: url, 
+        // Push schedule only if at least one valid URL and a time
+        if (validUrls.length > 0 && time) {
+            schedulesToSave.push({
+                url: validUrls.join(';'),  // store semicolon-separated, prefixed URLs
                 time: time,
                 autoClose: autoClose,
                 closeDuration: closeDuration,
