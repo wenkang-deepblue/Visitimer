@@ -6,6 +6,38 @@ const statusMessage = document.getElementById('status-message');
 const scheduleTemplate = document.getElementById('schedule-template');
 const clearAllButton = document.getElementById('clear-all');
 
+// Toast Notification Logic
+const toastElement = document.getElementById('toast');
+let toastTimeoutId = null;
+
+// Shows a toast message, localizing the message key
+function showToast(messageKey, substitutions = [], duration = 3000, type = 'success') {
+    if (!toastElement) return;
+
+    // Clear any existing hide timer
+    if (toastTimeoutId) {
+        clearTimeout(toastTimeoutId);
+    }
+
+    // Get localized message
+    const message = chrome.i18n.getMessage(messageKey, substitutions);
+
+    toastElement.textContent = message;
+    
+    // Remove all type classes
+    toastElement.classList.remove('success', 'error', 'warning', 'info');
+    // Add the specified type class
+    toastElement.classList.add(type);
+    // Activate the toast
+    toastElement.classList.add('active');
+
+    // Set a timer to hide the toast
+    toastTimeoutId = setTimeout(() => {
+        toastElement.classList.remove('active');
+        toastTimeoutId = null;
+    }, duration);
+}
+
 // --- Localization Helper ---
 function applyLocalization() {
     document.querySelectorAll('[data-i18n]').forEach(elem => {
@@ -315,15 +347,13 @@ function saveSchedules() {
             statusMessage.classList.add('error');
         } else {
             // If there is no time comparison message, show save success message
-            if (!statusMessage.textContent) {
-                statusMessage.textContent = chrome.i18n.getMessage('saveSuccess');
-                statusMessage.classList.add('success');
-                setTimeout(() => {
-                    statusMessage.textContent = '';
-                    statusMessage.className = 'status';
-                }, 3000);
-                } else {
-                // If there is a time comparison message, keep it displayed longer
+            if (statusMessage.className !== 'status warning') {
+                showToast('saveSuccess', [], 3000, 'success');
+                // Optional: clear status message area
+                statusMessage.textContent = '';
+                statusMessage.className = 'status';
+            } else {
+                // If there is a time comparison warning message, keep it displayed longer
                 setTimeout(() => {
                     statusMessage.textContent = '';
                     statusMessage.className = 'status';
@@ -383,22 +413,14 @@ function clearAllSchedules() {
     // Add a blank row
     createScheduleRow({ url: '', time: '', autoClose: 'no-close', closeDuration: 30, closeTime: '' }, 0);
     
-    // Show success message
-    statusMessage.textContent = chrome.i18n.getMessage('clearAllSuccess');
-    statusMessage.className = 'status success';
+    // Show success toast
+    showToast('clearAllSuccess', [], 3000, 'success');
     
     // Auto save empty data
     chrome.storage.sync.set({ schedules: [] }, () => {
         if (chrome.runtime.lastError) {
             console.error("Error saving empty data:", chrome.runtime.lastError);
-            statusMessage.textContent = chrome.i18n.getMessage('saveError') + ' ' + chrome.runtime.lastError.message;
-            statusMessage.className = 'status error';
-        } else {
-            // Clear status message after 3 seconds
-            setTimeout(() => {
-                statusMessage.textContent = '';
-                statusMessage.className = 'status';
-            }, 3000);
+            showToast('saveError', [], 3000, 'error');
         }
     });
 }
