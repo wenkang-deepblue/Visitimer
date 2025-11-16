@@ -10,6 +10,44 @@ const clearAllButton = document.getElementById('clear-all');
 const toastElement = document.getElementById('toast');
 let toastTimeoutId = null;
 
+function initTimePicker(inputElem, initialValue) {
+    if (!inputElem || typeof flatpickr === 'undefined') return;
+    if (initialValue) {
+        inputElem.value = initialValue;
+    }
+    flatpickr(inputElem, {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        allowInput: true,
+        // Custom parsing logic: only accept 0–23 o'clock, 0–59 minutes
+        parseDate: (dateStr, format) => {
+            const raw = dateStr ? dateStr.trim() : '';
+            if (!raw) return undefined;
+
+            const normalized = normalizeTimeString(raw);
+            const match = /^(\d{1,2}):(\d{2})$/.exec(normalized);
+            if (!match) {
+                showToast('invalidTime', [], 3000, 'error');
+                return undefined;
+            }
+
+            const h = parseInt(match[1], 10);
+            const m = parseInt(match[2], 10);
+            if (isNaN(h) || isNaN(m) || h < 0 || h > 23 || m < 0 || m > 59) {
+                showToast('invalidTime', [], 3000, 'error');
+                return undefined;
+            }
+
+            // Construct a time for the current day
+            const d = new Date();
+            d.setHours(h, m, 0, 0);
+            return d;
+        }
+    });
+}
+
 // Shows a toast message, localizing the message key
 function showToast(messageKey, substitutions = [], duration = 3000, type = 'success') {
     if (!toastElement) return;
@@ -98,12 +136,14 @@ function createScheduleRow(schedule = { url: '', time: '', autoClose: 'no-close'
 
     indexSpan.textContent = index + 1;
     urlInput.value = schedule.url;
-    timeInput.value = schedule.time;
-    
+
+    initTimePicker(timeInput, schedule.time);
+
     // Set auto-close related values
     autoCloseSelect.value = schedule.autoClose || 'no-close';
     durationInput.value = schedule.closeDuration || 30;
-    closeTimeInput.value = schedule.closeTime || '';
+
+    initTimePicker(closeTimeInput, schedule.closeTime || '');
     
     // Initialize auto-close option display
     handleAutoCloseChange(autoCloseSelect);
@@ -148,8 +188,10 @@ function createScheduleRow(schedule = { url: '', time: '', autoClose: 'no-close'
         } else if (val > 999) {
             this.value = 999;
             // Show warning message
-            statusMessage.textContent = chrome.i18n.getMessage('maxDurationWarning') || '最大输入值为999分钟';
+            const warnMsg = chrome.i18n.getMessage('maxDurationWarning');
+            statusMessage.textContent = warnMsg;
             statusMessage.className = 'status warning';
+            showToast('maxDurationWarning', [], 3000, 'warning');
             // Set timer to clear message
             setTimeout(() => {
                 statusMessage.textContent = '';
@@ -160,8 +202,10 @@ function createScheduleRow(schedule = { url: '', time: '', autoClose: 'no-close'
     
     // Add focus event, show message when user clicks input field
     durationInput.addEventListener('focus', function() {
-        statusMessage.textContent = chrome.i18n.getMessage('maxDurationInfo') || '请输入1-999之间的分钟数';
+        const infoMsg = chrome.i18n.getMessage('maxDurationInfo');
+        statusMessage.textContent = infoMsg;
         statusMessage.className = 'status info';
+        showToast('maxDurationInfo', [], 3000, 'info');
         // Set timer to clear message
         setTimeout(() => {
             statusMessage.textContent = '';
@@ -196,6 +240,30 @@ function loadSchedules() {
     });
 }
 
+// Normalize time string to "HH:MM" format
+function normalizeTimeString(raw) {
+    if (!raw) return '';
+    // Replace the first dot with a colon (user习惯输入 9.23 / 00.00)
+    let s = raw.trim().replace('.', ':');
+    const parts = s.split(':');
+    if (parts.length !== 2) return s;
+
+    let [h, m] = parts;
+    if (!h || !m) return s;
+    if (!/^\d{1,2}$/.test(h) || !/^\d{1,2}$/.test(m)) return s;
+
+    let hour = parseInt(h, 10);
+    let minute = parseInt(m, 10);
+    if (isNaN(hour) || isNaN(minute) || hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+        return s;
+    }
+
+    // 0 o'clock is displayed as "00", 1–9 o'clock is displayed as "1"–"9", 10 and above is two digits
+    const hourStr = (hour === 0 || hour > 9) ? String(hour).padStart(2, '0') : String(hour);
+    const minuteStr = String(minute).padStart(2, '0');
+    return `${hourStr}:${minuteStr}`;
+}
+
 function saveSchedules() {
     const rows = schedulesContainer.querySelectorAll('.schedule-row:not(#schedule-template)');
     const schedulesToSave = [];
@@ -212,9 +280,11 @@ function saveSchedules() {
         const closeTimeInput = row.querySelector('.close-time-input');
         
         let url = urlInput.value.trim();
+        timeInput.value = normalizeTimeString(timeInput.value);
         const time = timeInput.value;
         const autoClose = autoCloseSelect.value;
         const closeDuration = durationInput.value;
+        closeTimeInput.value = normalizeTimeString(closeTimeInput.value);
         const closeTime = closeTimeInput.value;
 
         // Reset previous errors visually
@@ -228,36 +298,49 @@ function saveSchedules() {
             if (rows.length > 1) {
                 return; // Skip saving this empty row if others exist
             } else if (rows.length === 1) {
-                schedulesToSave = []; // Prepare to save empty array
+                hasError = true;
+                const invalidUrlMsg = chrome.i18n.getMessage('invalidUrl') || chrome.i18n.getMessage('saveError');
+                statusMessage.textContent = invalidUrlMsg;
+                statusMessage.classList.add('error');
+                urlInput.style.borderColor = 'red';
+                urlInput.setCustomValidity(invalidUrlMsg);
+                showToast('invalidUrl', [], 3000, 'error');
                 return; // Stop processing this row
             }
         }
          // Check if only one field is filled
         if ((!url && time) || (url && !time)) {
             hasError = true;
-            statusMessage.textContent = `${chrome.i18n.getMessage('saveError')} (Row ${displayIndex})`;
+            const msgKey = (!url && time) ? 'invalidUrl' : 'invalidTime';
+            const baseMsg = chrome.i18n.getMessage(msgKey) || chrome.i18n.getMessage('saveError');
+            statusMessage.textContent = `${baseMsg} (Row ${displayIndex})`;
             statusMessage.classList.add('error');
             urlInput.style.borderColor = !url ? 'red' : '';
             timeInput.style.borderColor = !time ? 'red' : '';
+            showToast(msgKey, [], 3000, 'error');
             return;
         }
 
         // Validate time format (redundant for type="time", but good practice)
-        if (time && !/^\d{2}:\d{2}$/.test(time)) {
+        if (time && !/^\d{1,2}:\d{2}$/.test(time)) {
             hasError = true;
-            statusMessage.textContent = `${chrome.i18n.getMessage('invalidTime')} (Row ${displayIndex})`;
+            const invalidTimeMsg = chrome.i18n.getMessage('invalidTime');
+            statusMessage.textContent = `${invalidTimeMsg} (Row ${displayIndex})`;
             statusMessage.classList.add('error');
             timeInput.style.borderColor = 'red';
-            timeInput.setCustomValidity(chrome.i18n.getMessage('invalidTime'));
+            timeInput.setCustomValidity(invalidTimeMsg);
+            showToast('invalidTime', [], 3000, 'error');
             return;
         }
 
         // Validate close time
-        if (autoClose === 'at-time' && (!closeTime || !/^\d{2}:\d{2}$/.test(closeTime))) {
+        if (autoClose === 'at-time' && (!closeTime || !/^\d{1,2}:\d{2}$/.test(closeTime))) {
             hasError = true;
-            statusMessage.textContent = `${chrome.i18n.getMessage('invalidTime')} (Row ${displayIndex}, close time)`;
+            const invalidTimeMsg = chrome.i18n.getMessage('invalidTime');
+            statusMessage.textContent = `${invalidTimeMsg} (Row ${displayIndex}, close time)`;
             statusMessage.classList.add('error');
             closeTimeInput.style.borderColor = 'red';
+            showToast('invalidTime', [], 3000, 'error');
             return;
         }
 
@@ -275,6 +358,7 @@ function saveSchedules() {
             if (closeTimeMinutes < openTimeMinutes) {
                 statusMessage.textContent = chrome.i18n.getMessage("closeTimeBeforeOpenTime");
                 statusMessage.className = 'status warning';
+                showToast('closeTimeBeforeOpenTime', [], 4000, 'warning');
                 // Do not set hasError, allow saving
             }
         }
@@ -284,31 +368,44 @@ function saveSchedules() {
             const duration = parseInt(closeDuration, 10);
             if (isNaN(duration) || duration < 1 || duration > 999) {
                 hasError = true;
-                statusMessage.textContent = `Invalid duration (1-999) (Row ${displayIndex})`;
+                const durationMsg = chrome.i18n.getMessage('maxDurationWarning') || 'Invalid duration (1-999)';
+                statusMessage.textContent = `${durationMsg} (Row ${displayIndex})`;
                 statusMessage.classList.add('error');
                 durationInput.style.borderColor = 'red';
+                showToast('maxDurationWarning', [], 3000, 'error');
                 return;
             }
         }
 
         // Add http(s):// prefix if missing and validate URL
-        if (url) {
-            url = addHttpPrefix(url);
-            if (!isValidHttpUrl(url)) {
-                hasError = true;
-                statusMessage.textContent = `${chrome.i18n.getMessage('invalidUrl')} (Row ${displayIndex})`;
-                statusMessage.classList.add('error');
-                urlInput.style.borderColor = 'red';
-                urlInput.setCustomValidity(chrome.i18n.getMessage('invalidUrl'));
-                return;
+        // Support multiple URLs separated by semicolons or commas
+        let urlList = url
+            .split(/[;,]/)          // semicolon or comma separated
+            .map(u => u.trim())
+            .filter(u => u);
+
+        let validUrls = [];
+        if (urlList.length > 0) {
+            for (const rawUrl of urlList) {
+                const fullUrl = addHttpPrefix(rawUrl);
+                if (!isValidHttpUrl(fullUrl)) {
+                    hasError = true;
+                    const invalidUrlMsg = chrome.i18n.getMessage('invalidUrl');
+                    statusMessage.textContent = `${invalidUrlMsg} (Row ${displayIndex})`;
+                    statusMessage.classList.add('error');
+                    urlInput.style.borderColor = 'red';
+                    urlInput.setCustomValidity(invalidUrlMsg);
+                    showToast('invalidUrl', [], 3000, 'error');
+                    return;
+                }
+                validUrls.push(fullUrl);
             }
         }
 
-
         // If passed all checks for this row
-        if(url && time) { // Only add if both fields are valid
+        if (validUrls.length > 0 && time) { // Only add if at least one URL and time are valid
             schedulesToSave.push({ 
-                url: url, 
+                url: validUrls.join(';'),   // Store URLs separated by semicolons
                 time: time,
                 autoClose: autoClose,
                 closeDuration: closeDuration,
@@ -322,14 +419,15 @@ function saveSchedules() {
         const urlInput = rows[0].querySelector('.url-input');
         const timeInput = rows[0].querySelector('.time-input');
         if (!urlInput.value.trim() && !timeInput.value) {
-             // It was indeed the empty single row case
+                // It was indeed the empty single row case
         } else if (!hasError) {
-             // Single row had content but failed validation, error should have been set
-             // If somehow error wasn't set, set a generic one
+                // Single row had content but failed validation, error should have been set
+                // If somehow error wasn't set, set a generic one
             hasError = true;
             if (!statusMessage.textContent) {
                 statusMessage.textContent = chrome.i18n.getMessage('saveError');
                 statusMessage.classList.add('error');
+                showToast('saveError', [], 3000, 'error');
             }
         }
     }
@@ -345,6 +443,7 @@ function saveSchedules() {
             console.error("Error saving schedules:", chrome.runtime.lastError);
             statusMessage.textContent = chrome.i18n.getMessage('saveError') + ' ' + chrome.runtime.lastError.message;
             statusMessage.classList.add('error');
+            showToast('saveError', [], 3000, 'error');
         } else {
             // If there is no time comparison message, show save success message
             if (statusMessage.className !== 'status warning') {

@@ -375,21 +375,27 @@ chrome.alarms.onAlarm.addListener((alarm) => {
                 const schedule = schedules[index];
 
                 if (schedule && schedule.url && schedule.time) {
-                    chrome.tabs.create({ url: schedule.url }, (tab) => {
-                        // Handle auto-close
-                        if (schedule.autoClose === 'after-duration') {
-                            const closeDurationMs = parseInt(schedule.closeDuration, 10) * 60 * 1000;
-                            if (!isNaN(closeDurationMs) && closeDurationMs > 0) {
-                                const closeTimeMs = Date.now() + closeDurationMs;
-                                scheduleTabClose(tab.id, closeTimeMs);
+                    const urlList = schedule.url
+                        .split(/[;,]/)
+                        .map(u => u.trim())
+                        .filter(u => u);
+
+                    urlList.forEach(url => {
+                        chrome.tabs.create({ url }, (tab) => {
+                            // Handle auto-close for each tab
+                            if (schedule.autoClose === 'after-duration') {
+                                const closeDurationMs = parseInt(schedule.closeDuration, 10) * 60 * 1000;
+                                if (!isNaN(closeDurationMs) && closeDurationMs > 0) {
+                                    const closeTimeMs = Date.now() + closeDurationMs;
+                                    scheduleTabClose(tab.id, closeTimeMs);
+                                }
+                            } else if (schedule.autoClose === 'at-time' && schedule.closeTime) {
+                                const closeTimeMs = getSpecificTimeTimestamp(schedule.closeTime);
+                                if (closeTimeMs !== null) {
+                                    scheduleTabClose(tab.id, closeTimeMs);
+                                }
                             }
-                        } else if (schedule.autoClose === 'at-time' && schedule.closeTime) {
-                            const closeTimeMs = getSpecificTimeTimestamp(schedule.closeTime);
-                            
-                            if (closeTimeMs !== null) {
-                                scheduleTabClose(tab.id, closeTimeMs);
-                            }
-                        }
+                        });
                     });
 
                     // Reschedule for the next day

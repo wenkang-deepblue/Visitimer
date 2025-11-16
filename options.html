@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title data-i18n="optionsTitle"></title>
     <link rel="stylesheet" href="options.css">
+    <link rel="stylesheet" href="libs/flatpickr/flatpickr.min.css">
 </head>
 <body>
     <h1 data-i18n="optionsTitle"></h1>
@@ -29,7 +30,7 @@
     <div id="schedule-template" class="schedule-row" style="display: none;">
         <span class="index"></span>
         <input type="text" class="url-input" data-i18n-placeholder="urlPlaceholder">
-        <input type="time" class="time-input">
+        <input type="text" class="time-input">
         
         <select class="auto-close-select">
             <option value="no-close" data-i18n="noAutoClose"></option>
@@ -43,7 +44,7 @@
         </div>
         
         <div class="time-close-container" style="display: none;">
-            <input type="time" class="close-time-input">
+            <input type="text" class="close-time-input">
             <span data-i18n="timeToClose"></span>
         </div>
         
@@ -52,6 +53,7 @@
 
     <div id="toast"></div>
 
+    <script src="libs/flatpickr/flatpickr.min.js"></script>
     <script src="options.js"></script>
 </body>
 </html>

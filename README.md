@@ -86,3 +86,17 @@ Contributions are welcome! If you'd like to improve Visitimer:
 ## Support
 
 If you encounter any issues/bugs or have questions, please open an issue on the GitHub repository.
+
+## V1.5 Updates
+
+- Improved the time picker UI by replacing native `input[type="time"]` with a flatpickr-based time-only selector, ensuring consistent font size and appearance across Chrome versions.
+- Time inputs now accept both `:` and `.` as separators (e.g., `9:23` or `9.23`) and are normalized to `HH:MM`, while clearly rejecting invalid times (hours > 23 or minutes ≥ 60) with inline and toast error messages instead of silently adjusting them.
+- Enhanced validation and localized toast notifications for invalid URLs, missing URL/time combinations, out-of-range auto-close durations, and inconsistent open/close times.
+- Refined layout styles: narrower time input fields with centered text to make each schedule row more compact and readable.
+
+## What's new in v1.5 (user experience improvement)
+- New, clearer time picker with larger, easier-to-read time options and a cleaner layout.
+- Time input is more forgiving: you can type times using either : or . (e.g. 9:23 or 9.23), and Visitimer will convert them to a consistent format while preventing accidental invalid times.
+- Improved error messages and pop-up tips make it much easier to see why a schedule can’t be saved (invalid URL, missing time, out-of-range duration, etc.).
+- Multiple websites can now be scheduled in the same row using commas or semicolons, and each one will open in its own tab at the scheduled time.
+- Refined design of the schedule rows with tighter, centered time fields for a more compact and readable interface.
